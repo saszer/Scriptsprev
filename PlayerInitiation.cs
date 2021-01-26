@@ -10,14 +10,14 @@ public class PlayerInitiation : NetworkBehaviour
     public MeshRenderer[] meshrenderes;
 
     [SerializeField,Tooltip("Components to Disable if LocalPlayer")]
-    private Behaviour[] ComponentstoDisable;
+    private Behaviour[] ComponentstoEnable;
 
     public override void OnStartAuthority()
     {
         //Components to Disable if LocalPlayer
-        for(int i =0; i < ComponentstoDisable.Length; i++)
+        for(int i =0; i < ComponentstoEnable.Length; i++)
         {
-            ComponentstoDisable[i].enabled = true;
+            ComponentstoEnable[i].enabled = true;
         }
 
         //Change Color if its Local Player
@@ -33,11 +33,11 @@ public class PlayerInitiation : NetworkBehaviour
 
     
     //awake is called before start
-    private void Awake()
+    private void Start()
     {
-        for (int i = 0; i < ComponentstoDisable.Length; i++)
+        for (int i = 0; i < ComponentstoEnable.Length; i++)
         {
-            ComponentstoDisable[i].enabled = false;
+            ComponentstoEnable[i].enabled = false;
         }
     }
     
